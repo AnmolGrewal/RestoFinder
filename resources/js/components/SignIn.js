@@ -1,26 +1,27 @@
 import React, { Component } from 'react';
-import { Button, Form, Grid, Header, Image, Message, Segment } from 'semantic-ui-react'
+import { Button, Form, Grid, Header, Image, Message, Segment, Container } from 'semantic-ui-react'
+import Particles from 'react-particles-js'
+import '../../sass/signIn.css'
 
-class SignIn extends Component {
-    render(){
-        return (
-            <div className="login-form">
-                 {/*
-                Heads up! The styles below are necessary for the correct render of this example.
-                You can do same with CSS, the main idea is that all the elements up to the `Grid`
-                below must have a height of 100%.
-                */}
-                <style>{`
-                body > div,
-                body > div > div,
-                body > div > div > div.login-form {
-                    height: 100%;
-                }
-                `}</style>
-                <Grid textAlign='center' style={{ height: '100%' }} verticalAlign='middle'>
+const particleOptions = {
+    particles: {
+        number: {
+            value: 150,
+            density: {
+                enable: true,
+                value_area: 800
+            }
+        }
+    }
+}
+
+const LoginForm = () => {
+    return (
+        <div className="login-form">
+                <Grid textAlign='center' style={{ height: '100%' }} verticalAlign='middle'>    
                 <Grid.Column style={{ maxWidth: 450 }}>
                     <Header as='h2' color='teal' textAlign='center'>
-                    <Image src='/logo.png' /> Log-in to your account
+                        Log-in to your account
                     </Header>
                     <Form size='large'>
                     <Segment stacked>
@@ -32,7 +33,6 @@ class SignIn extends Component {
                         placeholder='Password'
                         type='password'
                         />
-
                         <Button color='teal' fluid size='large'>
                         Login
                         </Button>
@@ -44,6 +44,13 @@ class SignIn extends Component {
                 </Grid.Column>
                 </Grid>
             </div>
+    )
+}
+
+class SignIn extends Component {
+    render(){
+        return (
+            <LoginForm />
         )
     }
 }

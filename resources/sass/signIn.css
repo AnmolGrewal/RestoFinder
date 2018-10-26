@@ -1,0 +1,13 @@
+body > div {
+    height: 100%;
+}
+body > div > div {
+    height: 100%;
+}
+
+body > div > div > div.login-form {
+    height: 100%;
+    overflow: hidden;
+    background: url(https://media.giphy.com/media/1Tz1pbJTQQg12/giphy.gif);
+    background-size: cover;
+}
