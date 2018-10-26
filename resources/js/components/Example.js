@@ -8,7 +8,7 @@ class Example extends Component {
                 <div className="row justify-content-center">
                     <div className="col-md-8">
                         <div className="card">
-                            <div className="card-header"> <Link to="/sign"> Example Component </Link> </div>
+                            <div className="card-header"> <Link to="/login"> Example Component </Link> </div>
 
                             <div className="card-body">
                                 I'm an example component!
