@@ -1,0 +1,20 @@
+body > div {
+    height: 100%;
+}
+body > div > div {
+    height: 100%;
+}
+body > div > div > div {
+    height: 100%;
+}
+body > div > div > div.sign-up-container {
+    height: 100%;
+    overflow: hidden;
+    background: #2c2e43;
+} 
+body > div > div > div.sign-up-container > div.sign-up-form {
+    height: 100%;
+    width: 100%;
+    overflow: hidden;   
+    position: absolute; 
+}
