@@ -18,6 +18,10 @@ application lives.
 4. After bundling and no errors show, run 'php artisan serve'.
 5. Navigate to http://localhost:8000
 
+## Creating the Database
+1. Head to the database folder, 'cd database'
+2. Run the setup script './dbsetup.sh'
+
 ## About Laravel
 
 Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel attempts to take the pain out of development by easing common tasks used in the majority of web projects, such as:
