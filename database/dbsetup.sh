@@ -19,7 +19,7 @@ install_db() {
     sudo apt-get install mysql-server
     sudo ufw allow mysql
 
-    echo "GRANT ALL PRIVILEGES ON *.* TO 'khaki'@'localhost' IDENTIFIED BY 'khaki';" | sudo mysql -u root -p'\n' mysql
+    sudo mysql -u root -p'\n' < dbsetup.sql
 }
 
 check_db_status
