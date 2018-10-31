@@ -14,11 +14,12 @@ application lives.
 ## Starting the project
 1. Install Node JS LTS on your machine. https://nodejs.org/en/
 2. Install PHP / Composer on your machine. 
-3. Rename environment .env.example to .env
+3. Rename environment "env.txt" to ".env"
 4. Run "composer install"
-5. Make sure the UI is bundled before running. To do this, run 'npm run dev' on the project directory.
-6. After bundling and no errors show, run 'php artisan serve'.
-7. Navigate to http://localhost:8000
+5. Run "php artisan key:generate"
+6. Make sure the UI is bundled before running. To do this, run 'npm run dev' on the project directory.
+7. After bundling and no errors show, run 'php artisan serve'.
+8. Navigate to http://localhost:8000
 
 ## Creating the Database
 1. Head to the database folder, 'cd database'
