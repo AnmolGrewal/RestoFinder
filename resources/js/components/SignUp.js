@@ -3,11 +3,12 @@ import Particles from 'react-particles-js'
 import { particleOptions } from './SignIn';
 import { Button, Form, Grid, Header, Segment, Checkbox } from 'semantic-ui-react'
 import '../../sass/signUp.css'
+import {Link} from "react-router-dom";
 
 const options = [
     { key: 'm', text: 'Male', value: 'male' },
     { key: 'f', text: 'Female', value: 'female' },
-]
+];
 
 const SignUpForm = () => {
     return (
@@ -42,7 +43,7 @@ const SignUpForm = () => {
                         </Form.Field>
                         <Form.Field required> <Checkbox label='I agree to the Terms and Conditions' /> </Form.Field>
                         <Button color='teal' fluid size='large'>
-                        Sign Up
+                            <Link to='/'>Sign Up</Link>
                         </Button>
                     </Segment>
                     </Form>
@@ -50,7 +51,7 @@ const SignUpForm = () => {
                 </Grid>
             </div>
     )
-}
+};
 
 
 class SignUp extends Component {
