@@ -10,7 +10,12 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+/* Required to fix front-end routing issue */
+Route::any('{all}', function() {
+    return view('welcome');
+})->where(['all' => '.*']);
 
 Route::get('/', function () {
     return view('welcome');
 });
+
