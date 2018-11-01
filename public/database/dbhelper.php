@@ -15,3 +15,28 @@ function connect_to_db()
 
     return $connection;
 }
+
+function get_from_db($sql, &$connection, &$error)
+{
+    $data = array();
+
+    if (!$error)
+    {
+        $result = mysqli_query($connection, $sql);
+
+        if (!$result)
+        {
+            error("could not retrive data");
+            $error = 1;
+        }
+        else
+        {
+            while($row = mysqli_fetch_assoc($result))
+            {
+                array_push($data, $row);
+            }
+        }
+    }
+
+    return $data;
+}
