@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { Button, Form, Grid, Header, Message, Segment } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
 import Particles from 'react-particles-js'
+import { connect } from 'react-redux'
 import '../../sass/signIn.css'
 
 export const particleOptions = {
@@ -135,7 +136,7 @@ const LoginForm = () => {
                         required
                         />
                         <Button color='teal' fluid size='large'>
-                        Login
+                        <Link to = '/home'> Login </Link>
                         </Button>
                     </Segment>
                     </Form>
