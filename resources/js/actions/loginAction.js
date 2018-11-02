@@ -1,4 +1,5 @@
-export const authenticateUser = (email, password) => {
+import { withRouter } from 'react-router-dom'
+export const authenticateUser = (email, password, {history}) => {
     return (dispatch) => {
         let params = new FormData()
         let currenturl = window.location.hostname
@@ -9,6 +10,7 @@ export const authenticateUser = (email, password) => {
             .then(response => {
                 console.log(response)
                 dispatch({type:"AUTHENTICATE_SUCCESS"})
+                history.push('/home')
             })
     }
 }

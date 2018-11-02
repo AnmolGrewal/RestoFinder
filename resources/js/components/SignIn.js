@@ -166,7 +166,7 @@ class SignIn extends Component {
                         value = {password}
                         />
                         <Button color='teal' fluid size='large'>
-                        <Link to = '/home'> Login </Link>
+                            Login 
                         </Button>
                     </Segment>
                     </Form>
