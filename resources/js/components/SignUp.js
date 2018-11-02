@@ -45,7 +45,7 @@ class SignUp extends Component {
 
     onSubmit() {
         var {firstName, lastName, email, gender, password, retypedpassword } = this.state
-        this.props.registerUser(firstName, lastName, email, gender, password, retypedpassword)
+        this.props.registerUser(firstName, lastName, email, gender, password)
     }
 
     render(){
@@ -86,7 +86,7 @@ class SignUp extends Component {
                         </Form.Field>
                         <Form.Field required> <Checkbox label='I agree to the Terms and Conditions' /> </Form.Field>
                         <Button color='teal' fluid size='large'>
-                            <Link to='/'>Sign Up</Link>
+                            Sign Up
                         </Button>
                     </Segment>
                     </Form>
