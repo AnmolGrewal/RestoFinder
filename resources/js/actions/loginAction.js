@@ -1,5 +1,5 @@
-import { withRouter } from 'react-router-dom'
-export const authenticateUser = (email, password, {history}) => {
+import { history } from '../app'
+export const authenticateUser = (email, password) => {
     return (dispatch) => {
         let params = new FormData()
         let currenturl = window.location.hostname
