@@ -1,6 +1,6 @@
 import axios from "axios";
 
-export const registerUser = (firstName, lastName, gender, email, password) => {
+export const registerUser = (firstName, lastName, email, gender, password) => {
     return (dispatch) => {
         let params = new FormData()
         let currenturl = window.location.hostname
