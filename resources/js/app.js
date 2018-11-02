@@ -18,7 +18,6 @@ ReactDOM.render(
         <BrowserRouter>
             <div>
                 <Route exact path='/' component={SignIn} />
-                <Route exact path='/login' component={SignIn} />
                 <Route exact path='/signup' component={SignUp} />
                 <Route exact path='/home' component={Main} />
             </div>    
