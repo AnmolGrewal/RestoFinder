@@ -2,6 +2,8 @@ import React , { Component } from 'react';
 import Particles from 'react-particles-js'
 import { particleOptions } from './SignIn';
 import { Button, Form, Grid, Header, Segment, Checkbox } from 'semantic-ui-react'
+import { connect } from 'react-redux'
+import { registerUser } from '../actions/signUpAction'
 import '../../sass/signUp.css'
 import {Link} from "react-router-dom";
 
@@ -53,7 +55,6 @@ const SignUpForm = () => {
     )
 };
 
-
 class SignUp extends Component {
     render(){
         return (
@@ -65,4 +66,12 @@ class SignUp extends Component {
     }
 }
 
-export default SignUp
+const mapStateToProps = (state) => {
+    return {
+        isLoading: state.signUp.isLoading,
+        userRegistered: state.signUp.userRegistered
+    }
+}
+
+
+export default connect(mapStateToProps, { registerUser })(SignUp)

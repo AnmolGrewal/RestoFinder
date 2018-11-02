@@ -9,6 +9,7 @@ import 'semantic-ui-css/semantic.min.css';
 import Example from './components/Example';
 import SignIn from './components/SignIn'
 import SignUp from './components/SignUp'
+import Main from './components/Main/Main'
 
 const store = createStore();
 
@@ -19,6 +20,7 @@ ReactDOM.render(
                 <Route exact path='/' component={SignIn} />
                 <Route exact path='/login' component={SignIn} />
                 <Route exact path='/signup' component={SignUp} />
+                <Route exact path='/home' component={Main} />
             </div>    
         </BrowserRouter>   
     </Provider>    

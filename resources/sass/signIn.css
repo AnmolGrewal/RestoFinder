@@ -4,9 +4,7 @@ body > div {
 body > div > div {
     height: 100%;
 }
-body > div > div > div {
-    height: 100%;
-}
+
 body > div > div > div.login-container {
     height: 100%;
     overflow: hidden;
