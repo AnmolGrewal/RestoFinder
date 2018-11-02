@@ -6,12 +6,13 @@ import { BrowserRouter, Route, Switch, Link } from 'react-router-dom'
 import createStore from './store'
 import 'semantic-ui-css/semantic.min.css';
 
-import Example from './components/Example';
+
+import { PrivateRoute } from './PrivateRoute'
 import SignIn from './components/SignIn'
 import SignUp from './components/SignUp'
 import Main from './components/Main/Main'
 
-const store = createStore();
+export const store = createStore();
 
 ReactDOM.render(
     <Provider store={store}>
@@ -19,7 +20,7 @@ ReactDOM.render(
             <div>
                 <Route exact path='/' component={SignIn} />
                 <Route exact path='/signup' component={SignUp} />
-                <Route exact path='/home' component={Main} />
+                <PrivateRoute exact path='/home' component={Main} />
             </div>    
         </BrowserRouter>   
     </Provider>    
