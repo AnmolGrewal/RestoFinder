@@ -125,7 +125,7 @@ class SignIn extends Component {
         this.state = { email: '', password: ''}
     }
 
-    onChange() {
+    onChange(e) {
         switch(e.target.name){
             case "email":
                 this.setState({email: e.target.value})
