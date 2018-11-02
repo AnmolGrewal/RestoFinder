@@ -5,7 +5,7 @@ import { Button, Form, Grid, Header, Segment, Checkbox } from 'semantic-ui-react
 import { connect } from 'react-redux'
 import { registerUser } from '../actions/signUpAction'
 import '../../sass/signUp.css'
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const options = [
     { key: 'm', text: 'Male', value: 'male' },

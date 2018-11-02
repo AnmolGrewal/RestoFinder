@@ -3,6 +3,7 @@ import { Button, Form, Grid, Header, Message, Segment } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
 import Particles from 'react-particles-js'
 import { connect } from 'react-redux'
+import { authenticateUser } from '../actions/loginAction'
 import '../../sass/signIn.css'
 
 export const particleOptions = {
@@ -116,24 +117,53 @@ export const particleOptions = {
     retina_detect: true
 }
 
-const LoginForm = () => {
-    return (
-        <div className="login-form">
+class SignIn extends Component {
+    constructor() {
+        super()
+        this.onChange = this.onChange.bind(this)
+        this.onSubmit = this.onSubmit.bind(this)
+        this.state = { email: '', password: ''}
+    }
+
+    onChange() {
+        switch(e.target.name){
+            case "email":
+                this.setState({email: e.target.value})
+                break
+            case "password":
+                this.setState({password: e.target.value})  
+                break
+        }
+    }
+
+    onSubmit(){
+        var { email, password } = this.state
+        this.props.authenticateUser(email, password)
+    }
+
+    render(){
+        var { email, password } = this.state
+        return (
+        <div className="login-container">
+            <div className="login-form">
                 <Grid textAlign='center' style={{ height: '100%' }} verticalAlign='middle'>    
                 <Grid.Column style={{ maxWidth: 450 }}>
                     <Header as='h2' color='teal' textAlign='center'>
                         Log In to RestoFinder
                     </Header>
-                    <Form size='large'>
+                    <Form size='large' onSubmit={this.onSubmit}>
                     <Segment stacked>
-                        <Form.Input fluid icon='user' iconPosition='left' placeholder='E-mail address' required/>
+                        <Form.Input name="email" fluid icon='user' iconPosition='left' placeholder='E-mail address' required onChange={this.onChange} value={email}/>
                         <Form.Input
+                        name="password"
                         fluid
                         icon='lock'
                         iconPosition='left'
                         placeholder='Password'
                         type='password'
                         required
+                        onChange={this.onChange}
+                        value = {password}
                         />
                         <Button color='teal' fluid size='large'>
                         <Link to = '/home'> Login </Link>
@@ -146,18 +176,19 @@ const LoginForm = () => {
                 </Grid.Column>
                 </Grid>
             </div>
-    )
-}
-
-class SignIn extends Component {
-    render(){
-        return (
-        <div className="login-container">
-            <LoginForm />
             <Particles params={particleOptions} />              
         </div>       
         )
     }
 }
 
-export default SignIn
+const mapStateToProps = (state) => {
+    return {
+        loginSucessful: state.login.loginSucessful,
+        loginRejected: state.login.loginRejected,
+        userDoesNotExist: state.login.userDoesNotExist,
+        isLoading: state.login.isLoading
+    }
+}
+
+export default connect(mapStateToProps, { authenticateUser })(SignIn)
