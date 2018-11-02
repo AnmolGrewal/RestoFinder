@@ -93,18 +93,6 @@ class SignUp extends Component {
                 </Grid.Column>
                 </Grid>
             </div>
-<<<<<<< HEAD
-=======
-    )
-};
-
-
-class SignUp extends Component {
-    render(){
-        return (
-        <div className="sign-up-container">
-            <SignUpForm />
->>>>>>> 53092471dcd80d637571b58a71379081ab6beb97
             <Particles params={particleOptions} />              
         </div>    
         )
