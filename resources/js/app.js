@@ -11,13 +11,13 @@ import SignIn from './components/SignIn'
 import SignUp from './components/SignUp'
 import Main from './components/Main/Main'
 
-const store = createStore()
+const store = createStore();
 
 ReactDOM.render(
     <Provider store={store}>
         <BrowserRouter>
             <div>
-                <Route exact path='/' component={Example} />
+                <Route exact path='/' component={SignIn} />
                 <Route exact path='/login' component={SignIn} />
                 <Route exact path='/signup' component={SignUp} />
                 <Route exact path='/home' component={Main} />

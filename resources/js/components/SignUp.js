@@ -5,11 +5,12 @@ import { Button, Form, Grid, Header, Segment, Checkbox } from 'semantic-ui-react
 import { connect } from 'react-redux'
 import { registerUser } from '../actions/signUpAction'
 import '../../sass/signUp.css'
+import {Link} from "react-router-dom";
 
 const options = [
     { key: 'm', text: 'Male', value: 'male' },
     { key: 'f', text: 'Female', value: 'female' },
-]
+];
 
 class SignUp extends Component {
     constructor() {
@@ -85,13 +86,25 @@ class SignUp extends Component {
                         </Form.Field>
                         <Form.Field required> <Checkbox label='I agree to the Terms and Conditions' /> </Form.Field>
                         <Button color='teal' fluid size='large'>
-                        Sign Up
+                            <Link to='/'>Sign Up</Link>
                         </Button>
                     </Segment>
                     </Form>
                 </Grid.Column>
                 </Grid>
             </div>
+<<<<<<< HEAD
+=======
+    )
+};
+
+
+class SignUp extends Component {
+    render(){
+        return (
+        <div className="sign-up-container">
+            <SignUpForm />
+>>>>>>> 53092471dcd80d637571b58a71379081ab6beb97
             <Particles params={particleOptions} />              
         </div>    
         )

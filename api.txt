@@ -1,0 +1,6 @@
+I think its better to use Zomato API as it has better documentation and it is fairly easier to
+learn and use as well as implement vs the Yelp API. The only issue with Zomato is that the API
+is limited to 1000 server calls a day whereas the Yelp API has about 5000. But for the purposes
+of this Assignment 1000 API calls per day is enough. In regards to putting it into production,
+you can certainly contact Zomato for an increase in server calls for a certain price as even 5000
+at the end of the day is not a lot.
