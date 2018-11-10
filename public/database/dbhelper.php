@@ -1,8 +1,10 @@
 <?php
 
+include_once("../../enviroment.php");
+
 function connect_to_db()
 {
-    $host = "localhost";
+    $host = $db_host;
     $database = "plungercat";
     $user = "khaki";
     $password = "password";
