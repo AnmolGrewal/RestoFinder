@@ -1,45 +1,26 @@
 <?php
 
-require __DIR__ . '/../../vendor/autoload.php';
+require_once("yelphelper.php");
+require_once("../../environment.php");
 
-require_once("../../apikeys.php");
+$client = get_yelp_client($yelp_key);
 
-$options = array(
-    'apiHost' => 'api.yelp.com', // Optional, default 'api.yelp.com',
-    'apiKey' => $yelp_key, // Required, unless accessToken is provided
-);
-
-$client = \Stevenmaguire\Yelp\ClientFactory::makeWith(
-    $options,
-    \Stevenmaguire\Yelp\Version::THREE
-);
-
-$address = $_POST["address"];
+#get all the variables
+$location = $_POST["location"];
 $latitude = $_POST["latitude"];
 $longitude = $_POST["longitude"];
+$radius = $_POST["radius"];
+$categories = $_POST["categories"];
+$price = $_POST["price"];
 
 #check to make sure we have all the variables
-if (empty($address) && (empty($latitude) || empty($longitude)))
+if (empty($location) && (empty($latitude) || empty($longitude)))
 {
     http_response_code(422);
     die("missing parameters");
 }
 
-$search_parameters = [
-    'term' => "restaurants",
-    'location' => $address,
-    'latitude' => $latitude,
-    'longitude' => $longitude
-];
+$restaurants = get_restaurant_list($client, $location, $latitude, $longitude, $radius, $categories, $price);
+$random_restaurant = $restaurants[mt_rand(0, count($restaurants)-1)];
 
-try{
-    $results = $client->getBusinessesSearchResults($search_parameters);
-    $restaurants = $results->businesses;
-    
-    $random_restaurant = $restaurants[mt_rand(0, count($restaurants)-1)];
-    
-    echo print_r($random_restaurant);
-} catch (Exception $e) {
-    http_response_code(500);
-    die("api problem");
-}
+echo json_encode($random_restaurant);

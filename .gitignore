@@ -15,4 +15,4 @@ yarn-error.log
 .env
 .env.development
 .phpunit.result.cache
-apikeys.php
+environment.php
