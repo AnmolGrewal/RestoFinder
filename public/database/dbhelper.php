@@ -1,8 +1,6 @@
 <?php
 
-include_once("../../enviroment.php");
-
-function connect_to_db()
+function connect_to_db($db_host)
 {
     $host = $db_host;
     $database = "plungercat";
