@@ -9,7 +9,7 @@ export const registerUser = (firstName, lastName, email, gender, password) => {
         params.append('email', email)
         params.append('gender', gender)
         params.append('password', password)
-        let url = `http://${currenturl}:80/database/user/createUser.php`
+        let url = `http://localhost:8000/database/user/createUser.php`
         axios.post(url, params)
             .then(response => console.log(response))
     
