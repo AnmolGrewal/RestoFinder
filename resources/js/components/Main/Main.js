@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { Sidebar, Icon } from 'semantic-ui-react'
+import SidebarComponent from './Sidebar'
 import '../../../sass/main.css'
 
 import GoogleApiWrapper from './Map'
@@ -14,7 +15,7 @@ class Main extends Component {
                     visible={true}
                     inverted='true'
                     >
-                    <h1> I am sidebar </h1>
+                    <SidebarComponent/>
                     </Sidebar>
                     <Sidebar.Pusher>
                         <GoogleApiWrapper />
