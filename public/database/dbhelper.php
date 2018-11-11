@@ -1,8 +1,14 @@
 <?php
 
+include_once("../../enviroment.php");
+
 function connect_to_db()
 {
+<<<<<<< HEAD
     $host = "127.0.0.1";
+=======
+    $host = $db_host;
+>>>>>>> c0aaa445de2650f737799059817f13ccbc92b837
     $database = "plungercat";
     $user = "khaki";
     $password = "password";
