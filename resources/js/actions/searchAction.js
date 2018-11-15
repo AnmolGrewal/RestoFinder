@@ -8,7 +8,7 @@ export const searchForRandomRestaurant = (currentLocation) => {
         let currenturl = window.location.hostname
         params.append('longitude', currentLocation.longitude)
         params.append('latitude', currentLocation.latitude)
-        let url = `http://localhost:8000/restaurant/randomrestaurant.php`
+        let url = `http://${currenturl}:80/restaurant/randomrestaurant.php`
         axios.post(url, params)
             .then(response => {
                 console.log(response)

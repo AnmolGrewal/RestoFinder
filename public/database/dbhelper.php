@@ -4,7 +4,7 @@ include_once("../../enviroment.php");
 
 function connect_to_db()
 {
-    $host = "127.0.0.1";
+    $host = $db_host;
     $database = "plungercat";
     $user = "khaki";
     $password = "password";
