@@ -1,8 +1,8 @@
 const initialState = {
-    loginSucessful: null,
-    loginRejected: null,
-    userDoesNotExist: null,
-    isLoading: null
+    loginSucessful: false,
+    loginRejected: false,
+    userDoesNotExist: false,
+    isLoading: false
 }
 
 export const loginReducer = (state=initialState, action) => {
