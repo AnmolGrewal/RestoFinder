@@ -5,7 +5,8 @@ import { connect } from 'react-redux'
 import SidebarComponent from './Sidebar'
 import Food from './Food'
 import Search from './Search'
-
+import LeftContainer from '../Containers/LeftContainer'
+import MainContainer from '../Containers/MainContainer'
 import GoogleApiWrapper from './Map'
 import { history } from '../../app'
 
@@ -22,6 +23,35 @@ class Main extends Component {
     }
     render() {
         return (
+            <div className="App">
+            <LeftContainer>
+                <Sidebar width='thin' visible={true} inverted='true' animation='push'>
+                    <SidebarComponent />
+                </Sidebar>
+            </LeftContainer>
+            <MainContainer>
+                <Router history={history}>
+                    <div>
+                        <Route path='/home/search' exact component={Search} />
+                        <Route path='/home/map' exact component={GoogleApiWrapper} />
+                        <Route path='/home/settings' exact component={Food} />
+                    </div>
+                    </Router>
+            </MainContainer>
+            </div>
+        )
+    }
+}
+
+const mapStateToProps = (state) => {
+    return {
+        currentLocation: state.search.currentLocation
+    }
+}
+export default connect (mapStateToProps, { updateCurrentLocation }) (Main)
+
+/*
+
             <div className="main-app">
                 <Sidebar.Pushable>
                     <Sidebar
@@ -41,14 +71,5 @@ class Main extends Component {
                     </Router>
                 </Sidebar.Pushable>
             </div>
-        
-        )
-    }
-}
 
-const mapStateToProps = (state) => {
-    return {
-        currentLocation: state.search.currentLocation
-    }
-}
-export default connect (mapStateToProps, { updateCurrentLocation }) (Main)
+*/

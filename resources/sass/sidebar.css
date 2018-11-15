@@ -9,6 +9,10 @@
 
 .logout-button {
     margin-top: 10% !important;
+    width: 80% !important;
+    margin-right: auto !important;
+    margin-left: auto !important;
+
 }
 
 .search-button {
@@ -29,4 +33,9 @@
 .settings-button {
     margin-top: 15% !important;
     background-color: transparent !important;
+}
+.image-avatar {
+    margin-top: 5%;
+    margin-left: auto;
+    margin-right: auto;
 }

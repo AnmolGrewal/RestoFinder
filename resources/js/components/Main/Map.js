@@ -7,7 +7,6 @@ const GOOGLE_MAPS_API_KEY = "AIzaSyA-c9U296XcJk42WgQW3R2akfIg4LcQz_E"
 const style = {
     width: '100%',
     height: '100%',
-    position: 'relative'
 }
 
 export class MapComponent extends Component {
