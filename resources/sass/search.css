@@ -1,6 +1,5 @@
 .ui.teal.massive.button.random-button {
-    margin-left: 15%;
-    margin-top: 10%;
+    margin-left: 25%;
 }
 
 body > div > div > div.App > div.main-container > div {
@@ -14,4 +13,6 @@ body > div > div > div.App > div.main-container > div {
     height: 100%;
     margin-top: 0 !important;
     background-color: #2c2e43 !important;
+    padding-top: 30%;
+    position: absolute;
 }
