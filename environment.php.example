@@ -1,3 +1,0 @@
-<?php
-$db_host = "localhost";
-$yelp_key = "";
