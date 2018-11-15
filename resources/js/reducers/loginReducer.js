@@ -30,6 +30,11 @@ export const loginReducer = (state=initialState, action) => {
                 isLoading: false,
                 userDoesNotExist: true
             }
+        case "LOGOUT_USER":
+            return {
+                ...state,
+                loginSucessful: false
+            }
         default:
             return state
     }
