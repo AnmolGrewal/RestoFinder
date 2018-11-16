@@ -1,8 +1,8 @@
 const initialState = {
-    loginSucessful: null,
-    loginRejected: null,
-    userDoesNotExist: null,
-    isLoading: null
+    loginSucessful: false,
+    loginRejected: false,
+    userDoesNotExist: false,
+    isLoading: false
 }
 
 export const loginReducer = (state=initialState, action) => {
@@ -29,6 +29,11 @@ export const loginReducer = (state=initialState, action) => {
                 ...state,
                 isLoading: false,
                 userDoesNotExist: true
+            }
+        case "LOGOUT_USER":
+            return {
+                ...state,
+                loginSucessful: false
             }
         default:
             return state

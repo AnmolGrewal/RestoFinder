@@ -1,0 +1,41 @@
+.sidebar {
+    background-color: #384b59 !important;
+}
+
+.image-avatar {
+    margin-top: 10%;
+    margin-left: 20%;
+}
+
+.logout-button {
+    margin-top: 10% !important;
+    width: 80% !important;
+    margin-right: auto !important;
+    margin-left: auto !important;
+
+}
+
+.search-button {
+    margin-top: 10% !important;
+    background-color: transparent !important;
+}
+
+.favourite-button {
+    margin-top: 15% !important;
+    background-color: transparent !important;
+}
+
+.history-button {
+    margin-top: 15% !important;
+    background-color: transparent !important;
+}
+
+.settings-button {
+    margin-top: 15% !important;
+    background-color: transparent !important;
+}
+.image-avatar {
+    margin-top: 5%;
+    margin-left: auto;
+    margin-right: auto;
+}

@@ -14,3 +14,10 @@ export const authenticateUser = (email, password) => {
             })
     }
 }
+
+export const logoutUser = () => {
+    return(dispatch) => {
+        dispatch({type:"LOGOUT_USER"})
+        history.push('/')
+    }
+}

@@ -1,28 +1,65 @@
 import React, { Component } from 'react'
-import { Sidebar, Icon } from 'semantic-ui-react'
-import '../../../sass/main.css'
-
+import { Sidebar, Segment } from 'semantic-ui-react'
+import { Router, Route } from 'react-router-dom'
+import { connect } from 'react-redux'
+import SidebarComponent from './Sidebar'
+import Search from './Search'
+import LeftContainer from '../Containers/LeftContainer'
+import MainContainer from '../Containers/MainContainer'
+import MoreInfo from './MoreInfo'
 import GoogleApiWrapper from './Map'
+import { history } from '../../app'
+
+import { updateCurrentLocation } from '../../actions/searchAction'
 
 class Main extends Component {
+    componentDidMount(){
+        navigator.geolocation.getCurrentPosition(position => {
+            let latitude = position.coords.latitude
+            let longitude = position.coords.longitude
+            let currentPosition = { latitude, longitude}
+            this.props.updateCurrentLocation(currentPosition)
+        });
+    }
     render() {
+        var { moreInfoVisible } = this.props
         return (
-            <div className="main-app">
-                <Sidebar.Pushable>
-                    <Sidebar
-                    width='thin'
-                    visible={true}
+            <div className="App">
+            <LeftContainer>
+                <Sidebar width='thin' visible={true} inverted='true' animation='push'>
+                    <SidebarComponent />
+                </Sidebar>
+            </LeftContainer>
+            <MainContainer>
+                <Sidebar.Pushable as={Segment}>
+                <Sidebar
+                    width='wide'
+                    animation='overlay'
+                    direction='right'
+                    visible={moreInfoVisible}
+                    icon='labeled'
+                    vertical='true'
                     inverted='true'
-                    >
-                    <h1> I am sidebar </h1>
-                    </Sidebar>
-                    <Sidebar.Pusher>
-                        <GoogleApiWrapper />
-                    </Sidebar.Pusher>
+                >
+                <MoreInfo />
+                </Sidebar>
+                <Router history={history}>
+                    <div>
+                        <Route path='/home' exact component={Search} />
+                        <Route path='/home/map' exact component={GoogleApiWrapper} />
+                    </div>
+                </Router>
                 </Sidebar.Pushable>
+            </MainContainer>
             </div>
         )
     }
 }
 
-export default Main
+const mapStateToProps = (state) => {
+    return {
+        currentLocation: state.search.currentLocation,
+        moreInfoVisible: state.main.moreInfoVisible
+    }
+}
+export default connect (mapStateToProps, { updateCurrentLocation }) (Main)
