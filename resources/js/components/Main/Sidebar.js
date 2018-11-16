@@ -19,7 +19,7 @@ class SidebarComponent extends Component {
             <div className="sidebar">
                 <Image className="image-avatar" src="https://previews.123rf.com/images/tuktukdesign/tuktukdesign1606/tuktukdesign160600118/59070198-user-icon-man-profile-businessman-avatar-person-icon-in-vector-illustration.jpg" size='tiny' circular/>
                 <Button className='logout-button' content='Logout' color='red' fluid onClick={this.logout}/>
-                <Link to="/home/search">
+                <Link to="/home">
                     <Button className='search-button' fluid fitted='true'>
                         <Icon size='huge' fitted name='food'/>
                     </Button>

@@ -27,7 +27,6 @@ class Search extends Component {
             <div className="search-container">
                 <Button className="random-button" color="teal" size="massive" onClick={this.onClickRandom}> Find Nearby Restaurant </Button>
                 <Button className="fav-button" color="teal" size="massive"> Select From Favourites </Button>
-                <Particles params={particleOptions} />   
             </div>
         )
     }

@@ -1,12 +1,12 @@
 import React, { Component } from 'react'
-import { Sidebar } from 'semantic-ui-react'
+import { Sidebar, Segment } from 'semantic-ui-react'
 import { Router, Route } from 'react-router-dom'
 import { connect } from 'react-redux'
 import SidebarComponent from './Sidebar'
-import Food from './Food'
 import Search from './Search'
 import LeftContainer from '../Containers/LeftContainer'
 import MainContainer from '../Containers/MainContainer'
+import MoreInfo from './MoreInfo'
 import GoogleApiWrapper from './Map'
 import { history } from '../../app'
 
@@ -22,6 +22,7 @@ class Main extends Component {
         });
     }
     render() {
+        var { moreInfoVisible } = this.props
         return (
             <div className="App">
             <LeftContainer>
@@ -30,13 +31,25 @@ class Main extends Component {
                 </Sidebar>
             </LeftContainer>
             <MainContainer>
+                <Sidebar.Pushable as={Segment}>
+                <Sidebar
+                    width='wide'
+                    animation='overlay'
+                    direction='right'
+                    visible={moreInfoVisible}
+                    icon='labeled'
+                    vertical='true'
+                    inverted='true'
+                >
+                <MoreInfo />
+                </Sidebar>
                 <Router history={history}>
                     <div>
-                        <Route path='/home/search' exact component={Search} />
+                        <Route path='/home' exact component={Search} />
                         <Route path='/home/map' exact component={GoogleApiWrapper} />
-                        <Route path='/home/settings' exact component={Food} />
                     </div>
-                    </Router>
+                </Router>
+                </Sidebar.Pushable>
             </MainContainer>
             </div>
         )
@@ -45,31 +58,8 @@ class Main extends Component {
 
 const mapStateToProps = (state) => {
     return {
-        currentLocation: state.search.currentLocation
+        currentLocation: state.search.currentLocation,
+        moreInfoVisible: state.main.moreInfoVisible
     }
 }
 export default connect (mapStateToProps, { updateCurrentLocation }) (Main)
-
-/*
-
-            <div className="main-app">
-                <Sidebar.Pushable>
-                    <Sidebar
-                    width='thin'
-                    visible={true}
-                    inverted='true'
-                    animation='push'
-                    >
-                    <SidebarComponent />
-                    </Sidebar>
-                    <Router history={history}>
-                    <Sidebar.Pusher>
-                        <Route path='/home/search' exact component={Search} />
-                        <Route path='/home/map' exact component={GoogleApiWrapper} />
-                        <Route path='/home/settings' exact component={Food} />
-                    </Sidebar.Pusher>
-                    </Router>
-                </Sidebar.Pushable>
-            </div>
-
-*/

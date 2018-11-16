@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Map, GoogleApiWrapper, Marker } from 'google-maps-react'
 import { connect } from 'react-redux'
+import { toggleMoreInfo } from '../../actions/mainAction'
 
 const GOOGLE_MAPS_API_KEY = "AIzaSyA-c9U296XcJk42WgQW3R2akfIg4LcQz_E"
 
@@ -10,6 +11,18 @@ const style = {
 }
 
 export class MapComponent extends Component {
+    constructor(){
+        super()
+        this.onClick = this.onClick.bind(this)
+    }
+    componentDidMount(){
+        this.props.toggleMoreInfo()
+    }
+
+    onClick(){
+        this.props.toggleMoreInfo()
+    }
+
     render(){
         var { restaurant, searchLoading, currentLocation } = this.props
         let lat = currentLocation.latitude
@@ -19,7 +32,7 @@ export class MapComponent extends Component {
         let restaurantPos = {lat: restaurant.coordinates.latitude, lng: restaurant.coordinates.longitude}
         return (
             <Map google={this.props.google} style={style} initialCenter={currentPosition} zoom={12}>
-                <Marker title={restaurantName} position={restaurantPos}/>
+                <Marker onClick={this.onClick} title={restaurantName} position={restaurantPos}/>
             </Map>
         )
     }
@@ -32,6 +45,6 @@ const mapStateToProps = (state) => {
     }   
 }
 
-export default connect(mapStateToProps)(GoogleApiWrapper({
+export default connect(mapStateToProps, { toggleMoreInfo })(GoogleApiWrapper({
     apiKey: GOOGLE_MAPS_API_KEY
   })(MapComponent))
