@@ -21,12 +21,22 @@
 
     check_restaurant($restaurantId);
 
+    $sql = "update USERS set R_ID = '$restaurantId' where U_ID = $userId";
+    get_from_db($sql, $db, $error);
+
+    if ($error)
+    {
+        http_response_code(500);
+        die("unable to set favorite restaurant");
+    }
+
     mysqli_close($db);
 
     function check_restaurant($restaurantId)
     {
         global $db;
         global $error;
+        global $yelp_key;
 
         $sql = "select * from RESTAURANTS where R_ID = '$restaurantId'";
         $result = get_from_db($sql, $db, $error);
@@ -36,7 +46,6 @@
             return;
         }
 
-        global $yelp_key;
         $client = get_yelp_client($yelp_key);
 
         try
