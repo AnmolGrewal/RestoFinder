@@ -2,6 +2,7 @@
 
     require_once("../dbhelper.php");
     require_once("../../../environment.php");
+    require_once("../../restaurant/yelphelper.php");
 
     $db = connect_to_db($db_host);
     $error = 0;
@@ -20,6 +21,8 @@
 
     check_restaurant($restaurantId);
 
+    mysqli_close($db);
+
     function check_restaurant($restaurantId)
     {
         global $db;
@@ -33,5 +36,29 @@
             return;
         }
 
-        echo("Restaurant not in database");
+        global $yelp_key;
+        $client = get_yelp_client($yelp_key);
+
+        try
+        {
+            $parameters = [
+                'locale' => 'en_US',
+            ];
+
+            $restaurant = $client->getBusiness($restaurantId, $parameters);
+        }
+        catch (Exception $e)
+        {
+            http_response_code(500);
+            die($e->getMessage());
+        }
+
+        $sql = "insert into RESTAURANTS values ('$restaurantId', '$restaurant->name')";
+        get_from_db($sql, $db, $error);
+
+        if ($error)
+        {
+            http_response_code(500);
+            die("unable to add restaurant to database");
+        }
     }
