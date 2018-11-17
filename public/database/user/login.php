@@ -1,8 +1,9 @@
 <?php
 
     require_once("../dbhelper.php");
+    require_once("../../../environment.php");
 
-    $db = connect_to_db();
+    $db = connect_to_db($db_host);
     $error = 0;
 
     #get all the variables

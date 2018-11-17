@@ -1,8 +1,8 @@
 <?php
 
-function connect_to_db()
+function connect_to_db($db_host)
 {
-    $host = "localhost";
+    $host = $db_host;
     $database = "plungercat";
     $user = "khaki";
     $password = "password";
