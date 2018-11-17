@@ -5,24 +5,24 @@ RestoFinder is a Laravel based web application for random restaurant discovery.
 ## Development Setup
 ### Linux
 For development on Linux follow these steps
-1. Install all prerequisites
+1. Install all prerequisites  
 ```sudo apt-get install php7.2 php7.2-xml php7.2-gd php7.2-opcache php7.2-mbstring php-mysql nodejs npm composer```
-2. Clone this git
+2. Clone this git  
 ```git clone git@csil-git1.cs.surrey.sfu.ca:jkchung/T-Khaki.git```
-3. Rename env.txt to .env
+3. Rename env.txt to .env  
 ```mv env.txt .env```
-4. Run composer install
+4. Run composer install  
 ```composer install```
-5. Update npm
+5. Update npm  
 ```npm update```
-6. Generate key
+6. Generate key  
 ```php artisan key:generate```
-7. Build RestoFinder
+7. Build RestoFinder  
 ```npm run dev```
 8. Make copy of environment.php.example as environment.php and paste Yelp API key inside
-9. Setup local MySQL server
+9. Setup local MySQL server  
 ```sudo ./database/dbsetup.sh``` 
-10. Run artisan serve
+10. Run artisan serve  
 ```php artisan serve```
 11. Navigate to http://localhost:8000
 
@@ -36,9 +36,9 @@ https://getcomposer.org/download/
 
 ### Updating from a git pull
 When you pull a new commit make sure to update composer and npm
-1. composer update
+1. composer update  
 ```composer update```
-2. npm update
+2. npm update  
 ```npm update```
 
 ### Basic Folder Structure
@@ -48,25 +48,25 @@ For most server side endpoints, they are inside 'public'.
 
 ## Deployment
 Deployment instructions are for apache2 on a linux server.
-1. Install all prerequisites
+1. Install all prerequisites  
 ```sudo apt-get install apache2 libapache2-mod-php7.2 php7.2 php7.2-xml php7.2-gd php7.2-opcache php7.2-mbstring php-mysql composer```
-2. Clone this git to either ```/var/www/html/``` or make a link to this directory
+2. Clone this git to either ```/var/www/html/``` or make a link to this directory  
 ```git clone git@csil-git1.cs.surrey.sfu.ca:jkchung/T-Khaki.git```
-3. Rename env.txt to .env
+3. Rename env.txt to .env  
 ```mv env.txt .env```
-4. Run composer install
+4. Run composer install  
 ```composer install```
-5. Update npm
+5. Update npm  
 ```npm update```
-6. Generate key
+6. Generate key  
 ```php artisan key:generate```
-7. Build RestoFinder
+7. Build RestoFinder  
 ```npm run prod```
 8. Make copy of environment.php.example as environment.php and paste **Yelp API key** and **database server address** inside
-9. Change permissions of project directory
-```sudo chgrp -R www-data /var/www/html/T-Khaki```
+9. Change permissions of project directory  
+```sudo chgrp -R www-data /var/www/html/T-Khaki```  
 ```sudo chmod -R 775 /var/www/html/T-Khaki/storage```
-10. Create a ```laravel.conf``` file for apache2 in ```/etc/apache2/sites-available``` with contents below
+10. Create a `laravel.conf` file for apache2 in `/etc/apache2/sites-available` with contents below
 ```
 <VirtualHost *:80>
     ServerAdmin webmaster@localhost
@@ -80,15 +80,15 @@ Deployment instructions are for apache2 on a linux server.
     CustomLog ${APACHE_LOG_DIR}/access.log combined
 </VirtualHost>
 ```
-11. Reconfig apache2 with new config files
-```sudo a2dissite 000-default.conf```
-```sudo a2ensite laravel.conf```
-```sudo a2enmod rewrite```
-```sudo service apache2 restart```
+11. Reconfig apache2 with new config files  
+```sudo a2dissite 000-default.conf```  
+```sudo a2ensite laravel.conf```  
+```sudo a2enmod rewrite```  
+```sudo service apache2 restart```  
 12. Navigate to server ip and check if RestoFinder is up
 
 ### Setup Database
-1. clone git and run the follow line
+1. clone git and run the follow line  
 ```sudo ./database/dbsetup.sh```
 
 ## About Laravel
