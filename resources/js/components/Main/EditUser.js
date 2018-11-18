@@ -1,10 +1,7 @@
 import React , { Component } from 'react';
-import Particles from 'react-particles-js'
-import { particleOptions } from './SignIn';
-import { Button, Form, Grid, Header, Segment, Checkbox } from 'semantic-ui-react'
+import { Button, Form, Grid, Header, Segment } from 'semantic-ui-react'
 import { connect } from 'react-redux'
-import { registerUser } from '../actions/signUpAction'
-import '../../sass/signUp.css'
+import { registerUser } from '../../actions/signUpAction'
 import { Link } from "react-router-dom";
 
 const options = [
@@ -96,7 +93,6 @@ class EditUser extends Component {
                         </Grid.Column>
                     </Grid>
                 </div>
-                <Particles params={particleOptions} />
             </div>
         )
     }

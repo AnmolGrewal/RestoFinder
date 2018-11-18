@@ -12,7 +12,6 @@ import { PrivateRoute } from './PrivateRoute'
 import SignIn from './components/SignIn'
 import SignUp from './components/SignUp'
 import Main from './components/Main/Main'
-import EditUser from './components/EditUser'
 
 export const store = createStore();
 export const history = createBrowserHistory()
@@ -23,7 +22,6 @@ ReactDOM.render(
             <div>
                 <Route exact path='/' component={SignIn} />
                 <Route exact path='/signup' component={SignUp} />
-                <Route exact path='/edituser' component={EditUser} />
                 <PrivateRoute path='/home' component={Main} />
             </div>    
         </Router>   
