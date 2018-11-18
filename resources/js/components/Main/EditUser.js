@@ -2,7 +2,7 @@ import React , { Component } from 'react';
 import { Button, Form, Grid, Header, Segment } from 'semantic-ui-react'
 import { connect } from 'react-redux'
 import { registerUser } from '../../actions/signUpAction'
-import { Link } from "react-router-dom";
+import '../../../sass/edituser.css'
 
 const options = [
     { key: 'm', text: 'Male', value: 'male' },
@@ -52,12 +52,12 @@ class EditUser extends Component {
     render(){
         var { firstName, lastName, gender, password, newpassword, retypedpassword } = this.state
         return (
-            <div className="sign-up-container">
-                <div className="sign-up-form">
+            <div className="edit-user-container">
+                <div className="edit-user-form">
                     <Grid textAlign='center' style={{ height: '100%' }} verticalAlign='middle'>
                         <Grid.Column style={{ maxWidth: 450 }}>
                             <Header as='h2' color='teal' textAlign='center'>
-                                Edit User
+                                Edit Preferences And Settings
                             </Header>
                             <Form size='large' onSubmit={this.onSubmit}>
                                 <Segment stacked>
@@ -86,7 +86,7 @@ class EditUser extends Component {
                                         <input name='retyped-password' placeholder='Password' type='password'onChange={this.onChange} value={retypedpassword}/>
                                     </Form.Field>
                                     <Button color='teal' fluid size='large'>
-                                        Confirm
+                                        Save Changes
                                     </Button>
                                 </Segment>
                             </Form>
