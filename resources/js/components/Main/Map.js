@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { Map, GoogleApiWrapper, Marker } from 'google-maps-react'
 import { connect } from 'react-redux'
 import { toggleMoreInfo } from '../../actions/mainAction'
+import Loader from '../Loader'
 
 const GOOGLE_MAPS_API_KEY = "AIzaSyA-c9U296XcJk42WgQW3R2akfIg4LcQz_E"
 
@@ -30,11 +31,11 @@ export class MapComponent extends Component {
         let currentPosition = {lat: lat, lng: lng}
         let restaurantName = restaurant.name
         let restaurantPos = {lat: restaurant.coordinates.latitude, lng: restaurant.coordinates.longitude}
-        return (
+        return !searchLoading ? (
             <Map google={this.props.google} style={style} initialCenter={currentPosition} zoom={12}>
                 <Marker onClick={this.onClick} title={restaurantName} position={restaurantPos}/>
             </Map>
-        )
+        ) : <Loader />
     }
 }
 const mapStateToProps = (state) => {

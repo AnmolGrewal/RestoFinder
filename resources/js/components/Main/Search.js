@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { Button } from 'semantic-ui-react'
 import { connect } from 'react-redux'
 import { searchFromFavourites, searchForRandomRestaurant } from '../../actions/searchAction'
+import  Loader from '../Loader'
 import { particleOptions } from '../SignIn'
 import Particles from 'react-particles-js'
 import '../../../sass/search.css'
@@ -23,12 +24,12 @@ class Search extends Component {
     }
 
     render(){
-        return (
+        return this.props.currentLocation? (
             <div className="search-container">
                 <Button className="random-button" color="teal" size="massive" onClick={this.onClickRandom}> Find Nearby Restaurant </Button>
                 <Button className="fav-button" color="teal" size="massive"> Select From Favourites </Button>
             </div>
-        )
+        ) : <Loader />
     }
 }
 
