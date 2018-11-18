@@ -9,6 +9,8 @@ import MainContainer from '../Containers/MainContainer'
 import MoreInfo from './MoreInfo'
 import GoogleApiWrapper from './Map'
 import EditUser from './EditUser'
+import SetPreference from './SetPreferences'
+import ChangePassword from './ChangePassword'
 import { history } from '../../app'
 
 import { updateCurrentLocation } from '../../actions/searchAction'
@@ -49,6 +51,8 @@ class Main extends Component {
                         <Route path='/home' exact component={Search} />
                         <Route path='/home/map' exact component={GoogleApiWrapper} />
                         <Route path='/home/settings' exact component={EditUser} />
+                        <Route path='/home/settings/changepassword' exact component={ChangePassword} />
+                        <Route path='/home/settings/setpreference' exact component={SetPreference} />
                     </div>
                 </Router>
                 </Sidebar.Pushable>
