@@ -64,10 +64,11 @@ class MoreInfo extends Component {
                 <div style={{display:"block"}}>
                     <Rating disabled={true} icon="star" style={{display:"block"}} maxRating={5} defaultRating={rating} size="massive"/>
                 </div>
-                <Button.Group fluid={true} widths={3} style={{bottom:"0", position:"fixed"}}>
+                <Button.Group fluid={true} widths={4} style={{bottom:"0", position:"fixed"}}>
                     <Button onClick={this.naviagteToRestaurant}> Navigate Here </Button>
                     <Button onClick={this.searchRandom}> Find Another </Button>
                     <Button> Find From Favourites </Button>
+                    <Button> Add To Favourites </Button>
                 </Button.Group>
             </div>
         ) : null
