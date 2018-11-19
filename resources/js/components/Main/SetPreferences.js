@@ -61,7 +61,7 @@ class SetPreference extends Component {
                                         Save Changes 
                                     </Button>
                                 </Segment>
-                                </Form>
+                            </Form>
                         </Grid.Column>
                     </Grid>
                 </div>

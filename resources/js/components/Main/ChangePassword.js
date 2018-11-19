@@ -43,7 +43,7 @@ class ChangePassword extends Component {
                             </Header>
                             <Form size='large' onSubmit={this.onSubmit}>
                                 <Segment stacked>
-                                    <Form.Input name="currentPassword" fluid icon='locl' iconPosition='left' placeholder='Current Password' required onChange={this.onChange} value={currentPassword}/>
+                                    <Form.Input type="password" name="currentPassword" fluid icon='lock' iconPosition='left' placeholder='Current Password' required onChange={this.onChange} value={currentPassword}/>
                                     <Form.Input
                                     name="newPassword"
                                     fluid
