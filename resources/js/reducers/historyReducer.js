@@ -3,7 +3,7 @@ const initialState = {
     historyIsLoading: false
 }
 
-const historyReducer = (state=initialState, action) => {
+export const historyReducer = (state=initialState, action) => {
     switch(action.type){
         case "FETCH_USER_HISTORY_BEGIN":
             return {

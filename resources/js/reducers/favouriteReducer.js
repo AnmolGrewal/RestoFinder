@@ -3,7 +3,7 @@ const initialState = {
     favouritesIsLoading: false
 }
 
-const favouriteReducer = (state=initialState, action) => {
+export const favouriteReducer = (state=initialState, action) => {
     switch(action.type){
         case "FETCH_FAVOURITES_BEGIN":
             return {

@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { Grid, Header, Button, Rating, Table } from 'semantic-ui-react'
+import { connect } from 'react-redux'
 import '../../../sass/favourites.css'
 
 class Favourites extends Component {
@@ -36,4 +37,11 @@ class Favourites extends Component {
     }
 }
 
-export default Favourites
+const mapStateToProps = (state) => {
+    return {
+        loggedInAs: state.login.loggedInAs,
+        userFavourites: state.favourite.userFavourites,
+        favouritesIsLoading: state.favourite.favouritesIsLoading
+    }
+}
+export default connect(mapStateToProps) (Favourites)

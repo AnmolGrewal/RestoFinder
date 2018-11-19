@@ -9,7 +9,7 @@ export const authenticateUser = (email, password) => {
         axios.post(url, params)
             .then(response => {
                 console.log(response)
-                dispatch({type:"AUTHENTICATE_SUCCESS"})
+                dispatch({type:"AUTHENTICATE_SUCCESS", loggedInAs: email})
                 history.push('/home')
             })
     }
