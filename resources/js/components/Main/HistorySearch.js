@@ -28,12 +28,14 @@ class HistorySearch extends Component {
                                 </Table.Header>
                                 <Table.Body>
                                     {restaurants.map((restaurant) => {
+                                        return(
                                         <Table.Row>
                                             <Table.Cell verticalAlign="middle"> {restaurant.Visited} </Table.Cell>
                                             <Table.Cell verticalAlign="middle"> {restaurant.Name} </Table.Cell>
                                             <Table.Cell verticalAlign="middle"> {restaurant.Address} </Table.Cell>
                                             <Table.Cell verticalAlign="middle"> <Button positive size="small"> Add To Favourites </Button></Table.Cell>
                                         </Table.Row>
+                                        )
                                     })
                                     }
                                 </Table.Body>

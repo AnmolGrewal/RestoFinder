@@ -1,0 +1,2 @@
+const addToFavourites;
+const removeFromFavourites;
