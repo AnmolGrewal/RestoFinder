@@ -2,7 +2,6 @@
 
     require_once("../dbhelper.php");
     require_once("../../../environment.php");
-    require_once("../../restaurant/yelphelper.php");
 
     $db = connect_to_db($db_host);
     $error = 0;
