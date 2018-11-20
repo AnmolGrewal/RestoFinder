@@ -21,7 +21,7 @@
 
     check_restaurant($restaurantId);
 
-    $sql = "update USERS set R_ID = '$restaurantId' where U_ID = $userId";
+    $sql = "insert into FAVORITES (U_ID, R_ID) values ($userId, '$restaurantId')";
     get_from_db($sql, $db, $error);
 
     if ($error)
