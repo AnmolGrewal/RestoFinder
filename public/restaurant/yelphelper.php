@@ -59,3 +59,21 @@ function get_restaurant_list(&$client,  //required client object from get_yelp_c
     }
 }
 
+function retrieve_restaurant_by_id(&$client, //required client object
+                                   $restaurant_id) //required Yelp business id
+{
+    if (empty($restaurant_id))
+    {
+        http_response_code(422);
+        die("missing parameters");
+    }
+
+    try{
+        $restaurant = $client->getBusiness($restaurant_id);
+        return $restaurant;
+        
+    } catch (Exception $e) {
+        http_response_code(500);
+        die($e->getMessage());
+    }
+}
