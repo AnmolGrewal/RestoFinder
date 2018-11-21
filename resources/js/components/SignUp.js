@@ -53,38 +53,38 @@ class SignUp extends Component {
         return (
         <div className="sign-up-container">
             <div className="sign-up-form">
-                <Grid textAlign='center' style={{ height: '100%' }} verticalAlign='middle'>
+                <Grid textAlign='center' style={{ height: '100%' }} verticalAlign='middle'>    
                 <Grid.Column style={{ maxWidth: 450 }}>
                     <Header as='h2' color='teal' textAlign='center'>
                         Sign Up for RestoFinder
                     </Header>
                     <Form size='large' onSubmit={this.onSubmit}>
                     <Segment stacked>
-                        <Form.Field>
+                        <Form.Field required >
                             <label>First Name</label>
-                            <input name='firstName' placeholder='First Name' required onChange={this.onChange} value={firstName}/>
+                            <input name='firstName' placeholder='First Name' onChange={this.onChange} value={firstName}/>
                         </Form.Field>
-                        <Form.Field>
+                        <Form.Field required>
                             <label>Last Name</label>
-                            <input name='lastName' placeholder='Last Name' required onChange={this.onChange} value={lastName}/>
+                            <input name='lastName' placeholder='Last Name' onChange={this.onChange} value={lastName}/>
                         </Form.Field>
-                        <Form.Field>
+                        <Form.Field required>
                             <label> Gender </label>
-                            <input name='gender' options={options} placeholder='Gender' required onChange={this.onChange} value={gender}/>
+                            <input name='gender' options={options} placeholder='Gender' onChange={this.onChange} value={gender}/>
                         </Form.Field>
-                        <Form.Field>
+                        <Form.Field required>
                             <label>E-mail Address</label>
-                            <input name='email' placeholder='Email' required onChange={this.onChange} value={email}/>
+                            <input name='email' placeholder='Email' onChange={this.onChange} value={email}/>
                         </Form.Field>
-                        <Form.Field>
+                        <Form.Field required>
                             <label>Password</label>
-                            <input name='password' placeholder='Password' type='password' required onChange={this.onChange} value={password}/>
+                            <input name='password' placeholder='Password' type='password'onChange={this.onChange} value={password}/>
                         </Form.Field>
-                        <Form.Field>
+                        <Form.Field required>
                             <label>Re-type Password</label>
-                            <input name='retyped-password' placeholder='Password' type='password' required onChange={this.onChange} value={retypedpassword}/>
+                            <input name='retyped-password' placeholder='Password' type='password'onChange={this.onChange} value={retypedpassword}/>
                         </Form.Field>
-                        <Form.Field required> <Checkbox label='I agree to the Terms and Conditions' ></Checkbox> </Form.Field>
+                        <Form.Field required> <Checkbox label='I agree to the Terms and Conditions' /> </Form.Field>
                         <Button color='teal' fluid size='large'>
                             Sign Up
                         </Button>
@@ -93,8 +93,8 @@ class SignUp extends Component {
                 </Grid.Column>
                 </Grid>
             </div>
-            <Particles params={particleOptions} />
-        </div>
+            <Particles params={particleOptions} />              
+        </div>    
         )
     }
 }
