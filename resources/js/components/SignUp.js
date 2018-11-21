@@ -84,7 +84,7 @@ class SignUp extends Component {
                             <label>Re-type Password</label>
                             <input name='retyped-password' placeholder='Password' type='password' required onChange={this.onChange} value={retypedpassword}/>
                         </Form.Field>
-                        <Form.Field required> <Checkbox label='I agree to the Terms and Conditions' required></Checkbox> </Form.Field>
+                        <Form.Field required> <Checkbox label='I agree to the Terms and Conditions'></Checkbox> </Form.Field>
                         <Button color='teal' fluid size='large'>
                             Sign Up
                         </Button>
