@@ -2,7 +2,7 @@
 
 function connect_to_db($db_host)
 {
-    $host = $db_host;
+    $host = "127.0.0.1";
     $database = "plungercat";
     $user = "khaki";
     $password = "password";
