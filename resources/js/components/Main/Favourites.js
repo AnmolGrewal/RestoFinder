@@ -1,9 +1,13 @@
 import React, { Component } from 'react'
 import { Grid, Header, Button, Rating, Table } from 'semantic-ui-react'
 import { connect } from 'react-redux'
+import { getFavourites } from '../../actions/favouriteAction'
 import '../../../sass/favourites.css'
 
 class Favourites extends Component {
+    componentDidMount(){
+        this.props.getFavourites(this.props.loggedInAs)
+    }
     render(){
         return (
             <div className="favourites-container">
@@ -44,4 +48,4 @@ const mapStateToProps = (state) => {
         favouritesIsLoading: state.favourite.favouritesIsLoading
     }
 }
-export default connect(mapStateToProps) (Favourites)
+export default connect(mapStateToProps, { getFavourites }) (Favourites)

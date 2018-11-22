@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Grid, Table, Header, Button } from 'semantic-ui-react'
 import { connect } from 'react-redux'
+import { getUserHistory } from '../../actions/historyAction'
 import '../../../sass/historysearch.css'
 
 const restaurants = [
@@ -9,6 +10,9 @@ const restaurants = [
 ]
 
 class HistorySearch extends Component {
+    componentDidMount(){
+        this.props.getUserHistory(this.props.loggedInAs)
+    }
     render(){
         return (
             <div className="history-search-container">
@@ -56,4 +60,4 @@ const mapStateToProps = (state) => {
         loggedInAs: state.login.loggedInAs
     }
 }
-export default connect(mapStateToProps)(HistorySearch)
+export default connect(mapStateToProps, { getUserHistory })(HistorySearch)
