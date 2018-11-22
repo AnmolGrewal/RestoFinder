@@ -2,6 +2,7 @@ import React , { Component } from 'react';
 import { Button, Form, Grid, Header, Segment } from 'semantic-ui-react'
 import { connect } from 'react-redux'
 import { registerUser } from '../../actions/signUpAction'
+import { changePassword } from '../../actions/passwordAction'
 import '../../../sass/changepassword.css'
 
 class ChangePassword extends Component {
@@ -26,9 +27,10 @@ class ChangePassword extends Component {
         }
     }
     onSubmit() {
-        var { currentPassword, newPassword, retypedNewPassword } = this.state
-        //TODO: EDIT THIS
-        //this.props.registerUser(firstName, lastName, email, gender, password)
+        var { currentPassword, newPassword } = this.state
+        var { loggedInAs } = this.props
+        changePassword(loggedInAs, currentPassword, newPassword)
+
     }
 
     render(){
@@ -78,11 +80,12 @@ class ChangePassword extends Component {
         )
     }
 }
-//TODO: Fix this State to Edit User instead of SignUP
+
 const mapStateToProps = (state) => {
     return {
         isLoading: state.signUp.isLoading,
-        userRegistered: state.signUp.userRegistered
+        userRegistered: state.signUp.userRegistered,
+        loggedInAs: state.login.loggedInAs
     }
 }
 
