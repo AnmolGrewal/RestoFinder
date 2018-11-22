@@ -37,7 +37,7 @@ class SetPreference extends Component {
     onSubmit() {
         var { distance, preference } = this.state
         if(!distance) {
-            distance = 1000
+            distance = 5
         }
         setPreference(this.props.loggedInAs, distance, preference)
     }
