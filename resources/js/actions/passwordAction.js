@@ -1,3 +1,5 @@
+import { history } from '../app'
+
 export const changePassword = (userid, currentpassword, newpassword) => {
     let params = new FormData()
     let currenturl = window.location.hostname
@@ -8,6 +10,7 @@ export const changePassword = (userid, currentpassword, newpassword) => {
     axios.post(url, params)
         .then(response => {
             console.log("Success!")
+            history.push('/home/settings')
         })
     
 }
