@@ -26,3 +26,5 @@
         http_response_code(401);
         die("unknown user or incorrect password");
     }
+
+    echo json_encode($result);
