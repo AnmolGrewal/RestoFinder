@@ -4,7 +4,7 @@ export const getFavourites = (id) => {
         let params = new FormData()
         let currenturl = window.location.hostname
         params.append('user', id)
-        let url = `http://localhost:8000/database/user/getFavorites.php`
+        let url = `http://${currenturl}:80/database/user/getFavorites.php`
         axios.post(url, params)
             .then(response => {
                 let favourites = response.data
@@ -18,7 +18,7 @@ export const addFavourites = (user, restaurant) => {
     let currenturl = window.location.hostname
     params.append('user', user)
     params.append('restaurant', restaurant)
-    let url = `http://localhost:8000/database/user/addFavorite.php`
+    let url = `http://${currenturl}:80/database/user/addFavorite.php`
     axios.post(url, params)
         .then(response => {
             console.log("Success!")

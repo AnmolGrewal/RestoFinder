@@ -12,7 +12,7 @@ export const searchForRandomRestaurant = (currentLocation) => {
         let currenturl = window.location.hostname
         params.append('longitude', currentLocation.longitude)
         params.append('latitude', currentLocation.latitude)
-        let url = `http://localhost:8000/restaurant/randomrestaurant.php`
+        let url = `http://${currenturl}:80/restaurant/randomrestaurant.php`
         axios.post(url, params)
             .then(response => {
                 let restaurant = response.data
@@ -29,13 +29,13 @@ export const searchFromFavourites = (id) => {
         let params = new FormData()
         let currenturl = window.location.hostname
         params.append('user', id)
-        let url = `http://localhost:8000/database/user/getFavorites.php`
+        let url = `http://${currenturl}:80/database/user/getFavorites.php`
         axios.post(url, params)
             .then(response => {
                 let favourites = response.data
                 let randomValue = getRandomArrayValue(favourites.length)
                 let restaurantFromFavourites = favourites[randomValue].R_ID
-                let url = `http://localhost:8000/restaurant/restaurantdetails.php`
+                let url = `http://${currenturl}:80/restaurant/restaurantdetails.php`
                 let params = new FormData()
                 params.append('id', restaurantFromFavourites)
                 axios.post(url, params)

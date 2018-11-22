@@ -4,7 +4,7 @@ export const getUserHistory = (user) => {
         let params = new FormData()
         let currenturl = window.location.hostname
         params.append('user', user)
-        let url = `http://localhost:8000/database/history/getHistory.php`
+        let url = `http://${currenturl}:80/database/history/getHistory.php`
         axios.post(url, params)
             .then(response => {
                 let userHistory = response.data
@@ -18,7 +18,7 @@ export const addUserHistory = (user, restaurant) => {
     let currenturl = window.location.hostname
     params.append('user', user)
     params.append('restaurant', restaurant)
-    let url = `http://localhost:8000/database/history/addHistory.php`
+    let url = `http://${currenturl}:80/database/history/addHistory.php`
     axios.post(url, params)
         .then(response => {
             console.log("Success!")

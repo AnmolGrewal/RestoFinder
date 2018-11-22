@@ -4,7 +4,7 @@ export const changePassword = (userid, currentpassword, newpassword) => {
     params.append('user', userid)
     params.append('oldPassword', currentpassword)
     params.append('newPassword', newpassword)
-    let url = `http://localhost:8000/database/user/chPassword.php`
+    let url = `http://${currenturl}:80/database/user/chPassword.php`
     axios.post(url, params)
         .then(response => {
             console.log("Success!")

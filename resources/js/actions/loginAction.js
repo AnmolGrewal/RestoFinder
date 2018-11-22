@@ -5,7 +5,7 @@ export const authenticateUser = (email, password) => {
         let currenturl = window.location.hostname
         params.append('email', email)
         params.append('password', password)
-        let url = `http://localhost:8000/database/user/login.php`
+        let url = `http://${currenturl}:80/database/user/login.php`
         axios.post(url, params)
             .then(response => {
                 let userId = response.data[0].U_ID
