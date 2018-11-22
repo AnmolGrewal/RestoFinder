@@ -1,5 +1,7 @@
 import React , { Component } from 'react';
 import { Button, Form, Grid, Header, Segment, Dropdown, Input } from 'semantic-ui-react'
+import { connect } from 'react-redux'
+import { setPreference } from '../../actions/setPreferenceAction'
 import '../../../sass/setpreferences.css'
 
 const foodOptions = [
@@ -20,31 +22,27 @@ const foodOptions = [
 class SetPreference extends Component {
     constructor() {
         super()
-        this.onChange = this.onChange.bind(this)
         this.onSubmit = this.onSubmit.bind(this)
-        this.state = { currentPassword: '', newPassword: '', retypedNewPassword: ''}
+        this.state = { distance: '', preference: null}
     }
-    onChange(e){
-        switch(e.target.name){
-            case "currentPassword":
-                this.setState({currentPassword: e.target.value})
-                break
-            case "newPassword":
-                this.setState({newPassword: e.target.value})
-                break
-            case "newPasswordRetyped":
-                this.setState({retypedNewPassword: e.target.value})
-                break
-        }
+
+    onChangeDistance(e){
+        this.setState({distance: e.target.value})
     }
+
+    onChangePreference(e, {value}){
+        this.setState({preference: value})
+     }
+
     onSubmit() {
-        var { currentPassword, newPassword, retypedNewPassword } = this.state
-        //TODO: EDIT THIS
-        //this.props.registerUser(firstName, lastName, email, gender, password)
+        var { distance, preference } = this.state
+        if(!distance) {
+            distance = 5
+        }
+        setPreference(this.props.loggedInAs, distance, preference)
     }
 
     render(){
-        var { currentPassword, newPassword, retypedNewPassword } = this.state
         return (
             <div className="set-preference-container">
                 <div className="set-preference-form">
@@ -55,8 +53,8 @@ class SetPreference extends Component {
                             </Header>
                             <Form size='large' onSubmit={this.onSubmit}>
                                 <Segment stacked>
-                                    <Input label={{ basic: true, content: 'km' }} labelPosition='right' placeholder='Enter maximum distance from current location'/>
-                                    <Dropdown style={{marginTop:"5%"}}placeholder='Cuisines' fluid multiple selection options={foodOptions} />
+                                    <Input required onChange={this.onChangeDistance.bind(this)} label={{ basic: true, content: 'km' }} labelPosition='right' placeholder='Enter maximum distance from current location'/>
+                                    <Dropdown onChange={this.onChangePreference.bind(this)} style={{marginTop:"5%"}}placeholder='Cuisines' fluid multiple selection options={foodOptions} />
                                     <Button color='teal' fluid size='large' style={{marginTop:'5%'}}>
                                         Save Changes 
                                     </Button>
@@ -70,4 +68,11 @@ class SetPreference extends Component {
     }
 }
 
-export default SetPreference
+const mapStateToProps = (state) => {
+    return {
+        loggedInAs: state.login.loggedInAs
+    }
+}
+
+
+export default connect(mapStateToProps, { setPreference })(SetPreference)

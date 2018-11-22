@@ -9,11 +9,11 @@ $client = get_yelp_client($yelp_key);
 $location = $_POST["location"];
 $latitude = $_POST["latitude"];
 $longitude = $_POST["longitude"];
-$radius = $_POST["radius"];
-$categories = $_POST["categories"];
+$radius = $_POST["radius"]; //in m no km!
+$categories = $_POST["categories"]; //each category is seperated with comma
 $price = $_POST["price"];
 
-#check to make sure we have all the variables
+#check to make sure we have all required variables
 if (empty($location) && (empty($latitude) || empty($longitude)))
 {
     http_response_code(422);

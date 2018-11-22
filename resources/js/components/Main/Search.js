@@ -9,7 +9,7 @@ import '../../../sass/search.css'
 
 class Search extends Component {
     onClickRandom = () => {
-        this.props.searchForRandomRestaurant(this.props.currentLocation)
+        this.props.searchForRandomRestaurant(this.props.loggedInAs, this.props.currentLocation)
     }
 
     onClickFavourites = () => {
