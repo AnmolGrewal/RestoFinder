@@ -1,6 +1,6 @@
 const initialState = {
     userHistory: null,
-    historyIsLoading: false
+    historyIsLoading: true
 }
 
 export const historyReducer = (state=initialState, action) => {

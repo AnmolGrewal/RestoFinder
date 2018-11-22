@@ -1,13 +1,40 @@
-export const getFavourites = (email) => {
+export const getFavourites = (id) => {
     return(dispatch) => {
         dispatch({type: "FETCH_FAVOURITES_BEGIN"})
         let params = new FormData()
         let currenturl = window.location.hostname
-        params.append('user', email)
-        let url = `http://localhost:8000/database/user/getFavourites.php`
+        params.append('user', id)
+        let url = `http://localhost:8000/database/user/getFavorites.php`
         axios.post(url, params)
             .then(response => {
-                console.log(response)
+                let favourites = response.data
+                dispatch({type:"FETCH_FAVOURITES_SUCCESS", favourites})
             })
     }
+}
+
+export const addFavourites = (user, restaurant) => {
+    let params = new FormData()
+    let currenturl = window.location.hostname
+    params.append('user', user)
+    params.append('restaurant', restaurant)
+    let url = `http://localhost:8000/database/user/addFavorite.php`
+    axios.post(url, params)
+        .then(response => {
+            console.log("Success!")
+        })
+    
+}
+
+export const removeFavourites = (user, restaurant) => {
+    let params = new FormData()
+    let currenturl = window.location.hostname
+    params.append('user', user)
+    params.append('restaurant', restaurant)
+    let url = `http://localhost:8000/database/user/rmFavorite.php`
+    axios.post(url, params)
+        .then(response => {
+            console.log("Success!")
+        })
+    
 }

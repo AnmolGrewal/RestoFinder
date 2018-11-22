@@ -1,8 +1,10 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { toggleMoreInfo } from '../../actions/mainAction'
-import { searchForRandomRestaurant } from '../../actions/searchAction'
+import { searchForRandomRestaurant, searchFromFavourites } from '../../actions/searchAction'
 import { Icon, Divider, Image, Header, Rating, Button } from 'semantic-ui-react'
+import { addUserHistory } from '../../actions/historyAction'
+import { addFavourites } from '../../actions/favouriteAction'
 import "../../../sass/moreinfo.css"
 
 class MoreInfo extends Component {
@@ -15,19 +17,31 @@ class MoreInfo extends Component {
     naviagteToRestaurant(){
         let {latitude,longitude} = this.props.restaurantsNearby.coordinates
         window.open(`https://www.google.com/maps/dir/?api=1&destination=${latitude},${longitude}`, '_blank')
+        addUserHistory(this.props.loggedInAs, this.props.restaurantsNearby.id)
     }   
 
     searchRandom(){
         this.props.searchForRandomRestaurant(this.props.currentLocation)
     }
 
+    searchFavorite = () => {
+        this.props.searchFromFavourites(this.props.loggedInAs)
+    }
+
     onClick() {
         this.props.toggleMoreInfo()
     }
 
+    markAsFavourite = () => {
+        console.log("Clicked")
+        let userId = this.props.loggedInAs
+        let restaurantId = this.props.restaurantsNearby.id
+        addFavourites(userId, restaurantId)
+    }
+
     render(){
         if(this.props.restaurantsNearby) {
-            var { categories , image_url, location, name, phone, rating } = this.props.restaurantsNearby
+            var { categories , image_url, location, name, phone, rating, id } = this.props.restaurantsNearby
             var address = location.display_address.join("  ")
             var cuisine = ""
             categories.forEach(category => {
@@ -67,8 +81,8 @@ class MoreInfo extends Component {
                 <Button.Group fluid={true} widths={4} style={{bottom:"0", position:"fixed"}}>
                     <Button onClick={this.naviagteToRestaurant}> Navigate Here </Button>
                     <Button onClick={this.searchRandom}> Find Another </Button>
-                    <Button> Find From Favourites </Button>
-                    <Button> Add To Favourites </Button>
+                    <Button onClick={this.searchFavorite}> Find From Favourites </Button>
+                    <Button onClick={this.markAsFavourite}> Add To Favourites </Button>
                 </Button.Group>
             </div>
         ) : null
@@ -79,8 +93,9 @@ const mapStateToProps = (state) => {
     return {
         currentLocation: state.search.currentLocation,
         restaurantsNearby: state.search.restaurantsNearby,
-        moreInfoVisible: state.main.moreInfoVisible
+        moreInfoVisible: state.main.moreInfoVisible,
+        loggedInAs: state.login.loggedInAs
     }
 }
 
-export default connect (mapStateToProps, { toggleMoreInfo, searchForRandomRestaurant }) (MoreInfo)
+export default connect (mapStateToProps, { toggleMoreInfo, searchForRandomRestaurant, searchFromFavourites }) (MoreInfo)

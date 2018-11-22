@@ -1,15 +1,24 @@
 import React, { Component } from 'react'
 import { Grid, Header, Button, Rating, Table } from 'semantic-ui-react'
 import { connect } from 'react-redux'
-import { getFavourites } from '../../actions/favouriteAction'
+import { getFavourites, removeFavourites } from '../../actions/favouriteAction'
+import Loader from '../Loader'
 import '../../../sass/favourites.css'
 
 class Favourites extends Component {
     componentDidMount(){
         this.props.getFavourites(this.props.loggedInAs)
     }
+
+    removeFavourite = (restaurant) => {
+        let userId = this.props.loggedInAs
+        let restaurantId = restaurant.R_ID
+        removeFavourites(userId, restaurantId)
+    }
+
     render(){
-        return (
+        var { userFavourites, favouritesIsLoading } = this.props
+        return favouritesIsLoading ? <Loader /> : (
             <div className="favourites-container">
                 <div className="favourites-form">
                     <Grid textAlign='center' style={{ height: '100%' }} verticalAlign='middle'>
@@ -21,16 +30,18 @@ class Favourites extends Component {
                                 <Table.Header>
                                     <Table.Row>
                                         <Table.HeaderCell textAlign="center">Name</Table.HeaderCell>
-                                        <Table.HeaderCell textAlign="center">Rating</Table.HeaderCell>
                                         <Table.HeaderCell /> 
                                     </Table.Row>
                                 </Table.Header>
                                 <Table.Body>
+                                    {userFavourites.map((favourite) => {
+                                    return (
                                     <Table.Row>
-                                        <Table.Cell verticalAlign="middle"> Bali Thai </Table.Cell>
-                                        <Table.Cell verticalAlign="middle"> <Rating disabled={true} icon="star" style={{display:"block"}} maxRating={5} defaultRating={3} size="small"/> </Table.Cell>
-                                        <Table.Cell verticalAlign="middle"> <Button negative size="small"> Remove </Button> </Table.Cell>
+                                        <Table.Cell verticalAlign="middle"> {favourite.R_NAME} </Table.Cell>
+                                        <Table.Cell verticalAlign="middle"> <Button negative size="small" onClick={this.removeFavourite.bind(this, favourite)}> Remove </Button> </Table.Cell>
                                     </Table.Row>
+                                    )})
+                                    }
                                 </Table.Body>
                             </Table>                            
                         </Grid.Column>

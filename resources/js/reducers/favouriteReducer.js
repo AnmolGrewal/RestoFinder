@@ -1,6 +1,6 @@
 const initialState = {
     userFavourites: null,
-    favouritesIsLoading: false
+    favouritesIsLoading: true
 }
 
 export const favouriteReducer = (state=initialState, action) => {

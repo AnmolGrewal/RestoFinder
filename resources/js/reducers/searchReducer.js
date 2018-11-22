@@ -12,6 +12,11 @@ export const searchReducer = (state=initialState, action) => {
                 ...state,
                 searchLoading: true
             }
+        case "FAVOURITE_SERACH_DONE":
+            return {
+                ...state,
+                searchLoading: false
+            }
         case "SEARCH_SUCCESS":
             return {
                 ...state,
