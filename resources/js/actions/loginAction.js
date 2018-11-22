@@ -8,8 +8,8 @@ export const authenticateUser = (email, password) => {
         let url = `http://${currenturl}:80/database/user/login.php`
         axios.post(url, params)
             .then(response => {
-                console.log(response)
-                dispatch({type:"AUTHENTICATE_SUCCESS"})
+                let userId = response.data[0].U_ID
+                dispatch({type:"AUTHENTICATE_SUCCESS", loggedInAs: userId})
                 history.push('/home')
             })
     }

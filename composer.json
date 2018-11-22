@@ -10,7 +10,8 @@
         "laravel/framework": "5.7.*",
         "laravel/tinker": "^1.0",
         "stevenmaguire/oauth2-yelp": "0.1.0",
-        "stevenmaguire/yelp-php": "^2.1"
+        "stevenmaguire/yelp-php": "^2.1",
+      "ext-json": "*"
     },
     "require-dev": {
         "beyondcode/laravel-dump-server": "^1.0",

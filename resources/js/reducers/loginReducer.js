@@ -2,7 +2,8 @@ const initialState = {
     loginSucessful: false,
     loginRejected: false,
     userDoesNotExist: false,
-    isLoading: false
+    isLoading: false,
+    loggedInAs: null
 }
 
 export const loginReducer = (state=initialState, action) => {
@@ -16,7 +17,8 @@ export const loginReducer = (state=initialState, action) => {
             return {
                 ...state,
                 isLoading: false,
-                loginSucessful: true
+                loginSucessful: true,
+                loggedInAs: action.loggedInAs
             }
         case "AUTHENTICATE_FAIL":
             return {

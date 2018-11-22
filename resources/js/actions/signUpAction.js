@@ -1,4 +1,5 @@
-import axios from "axios";
+import axios from "axios"
+import { history } from '../app'
 
 export const registerUser = (firstName, lastName, email, gender, password) => {
     return (dispatch) => {
@@ -12,6 +13,6 @@ export const registerUser = (firstName, lastName, email, gender, password) => {
         let url = `http://${currenturl}:80/database/user/createUser.php`
         axios.post(url, params)
             .then(response => console.log(response))
-    
+            history.push('/')
     }
 }

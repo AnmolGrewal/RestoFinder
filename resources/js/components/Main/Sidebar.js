@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Button, Icon, Image, Sidebar } from 'semantic-ui-react'
+import { Button, Icon, Image } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
 import { logoutUser } from '../../actions/loginAction'
 import { connect } from 'react-redux'
@@ -24,16 +24,20 @@ class SidebarComponent extends Component {
                         <Icon size='huge' fitted name='food'/>
                     </Button>
                 </Link>
-                <Button className='favourite-button' fluid>
-                    <Icon size='huge' fitted name='favorite'/>
-                </Button>
-                <Button className='history-button' fluid>
-                    <Icon size='huge' fitted name='history'/>
-                </Button>
+                <Link to="/home/favourites">
+                    <Button className='favourite-button' fluid>
+                        <Icon size='huge' fitted name='favorite'/>
+                    </Button>
+                </Link>
+                <Link to="/home/history">
+                    <Button className='history-button' fluid>
+                        <Icon size='huge' fitted name='history'/>
+                    </Button>
+                </Link>
                 <Link to="/home/settings">
-                <Button className='settings-button' fluid>
-                    <Icon size='huge' fitted name='settings'/>
-                </Button>
+                    <Button className='settings-button' fluid>
+                        <Icon size='huge' fitted name='settings'/>
+                    </Button>
                 </Link>
             </div>
         )
