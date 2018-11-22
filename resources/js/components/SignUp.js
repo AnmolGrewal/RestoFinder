@@ -80,11 +80,6 @@ class SignUp extends Component {
                                                value={lastName}/>
                                     </Form.Field>
                                     <Form.Field>
-                                        <label> Gender </label>
-                                        <input name='gender' options={options} placeholder='Gender' required
-                                               onChange={this.onChange} value={gender}/>
-                                    </Form.Field>
-                                    <Form.Field>
                                         <label>E-mail Address</label>
                                         <input name='email' placeholder='Email' required onChange={this.onChange}
                                                value={email}/>
@@ -99,18 +94,27 @@ class SignUp extends Component {
                                         <input name='retyped-password' placeholder='Password' type='password' required
                                                onChange={this.onChange} value={retypedpassword}/>
                                     </Form.Field>
+                                    <Form.Field>
+                                        <label> Gender </label>
+                                        <select name='gender' options={options} placeholder='Gender' required
+                                                onChange={this.onChange} value={gender}>
+                                            <option value="Male">Male</option>
+                                            <option value="Female">Female</option>
+                                            <option value="Other">Other</option>
+                                        </select>
+                                    </Form.Field>
                                     <Form.Field required>
-                                        <label>I Accept the Terms and Conditions</label>
+                                        <label><a href="http://www.anmolgrewal.com/terms.html"> I Accept the Terms and Conditions</a></label>
                                         <input name='terms' type='checkbox' required/>
                                     </Form.Field>
                                     <Link to='/'>
-                                        <Button color='teal' fluid size='large'>
-                                            Cancel
+                                        <Button color='teal'>
+                                                Cancel
                                         </Button>
                                     </Link>
-                                    <Button color='teal' fluid size='large'>
-                                        Sign Up
-                                    </Button>
+                                        <Button color='teal'>
+                                            Sign Up
+                                        </Button>
                                 </Segment>
                             </Form>
                         </Grid.Column>
