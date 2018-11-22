@@ -31,7 +31,7 @@ export const removeFavourites = (user, restaurant) => {
     let currenturl = window.location.hostname
     params.append('user', user)
     params.append('restaurant', restaurant)
-    let url = `http://localhost:8000/database/user/rmFavorite.php`
+    let url = `http://http://${currenturl}:80/database/user/rmFavorite.php`
     axios.post(url, params)
         .then(response => {
             console.log("Success!")

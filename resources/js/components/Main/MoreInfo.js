@@ -21,7 +21,7 @@ class MoreInfo extends Component {
     }   
 
     searchRandom(){
-        this.props.searchForRandomRestaurant(this.props.currentLocation)
+        this.props.searchForRandomRestaurant(this.props.loggedInAs, this.props.currentLocation)
     }
 
     searchFavorite = () => {
@@ -41,6 +41,7 @@ class MoreInfo extends Component {
 
     render(){
         if(this.props.restaurantsNearby) {
+            console.log(this.props.restaurantsNearby)
             var { categories , image_url, location, name, phone, rating, id } = this.props.restaurantsNearby
             var address = location.display_address.join("  ")
             var cuisine = ""

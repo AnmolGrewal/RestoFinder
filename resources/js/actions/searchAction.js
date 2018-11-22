@@ -5,19 +5,34 @@ const getRandomArrayValue = (max) => {
     return Math.floor(Math.random() * Math.floor(max));
   }
 
-export const searchForRandomRestaurant = (currentLocation) => {
+export const searchForRandomRestaurant = (id, currentLocation) => {
     return(dispatch) => {
         dispatch({type: "SEARCH_BEGIN"})
         let params = new FormData()
         let currenturl = window.location.hostname
-        params.append('longitude', currentLocation.longitude)
-        params.append('latitude', currentLocation.latitude)
-        let url = `http://${currenturl}:80/restaurant/randomrestaurant.php`
+        params.append('user', id)
+        let url = `http://${currenturl}:80/database/user/getPref.php`
         axios.post(url, params)
-            .then(response => {
-                let restaurant = response.data
-                dispatch({type: "SEARCH_SUCCESS", restaurant})
-                history.push('/home/map')
+            .then(preference => {
+                if(preference.data[0].U_DISTANCE){
+                    var distance = preference.data[0].U_DISTANCE
+                }
+                if(preference.data[0].U_CATEGORIES){
+                    var categories = preference.data[0].U_CATEGORIES
+                }
+                let paramsRandom = new FormData()
+                paramsRandom.append('longitude', currentLocation.longitude)
+                paramsRandom.append('latitude', currentLocation.latitude)
+                paramsRandom.append('radius', distance*1000)
+                paramsRandom.append('categories', categories)
+                let url = `http://${currenturl}:80/restaurant/randomrestaurant.php`
+                axios.post(url, paramsRandom)
+                    .then(response => {
+                        let restaurant = response.data
+                        dispatch({type: "SEARCH_SUCCESS", restaurant})
+                        history.push('/home/map')
+                    })
+
             })
     }
 }
