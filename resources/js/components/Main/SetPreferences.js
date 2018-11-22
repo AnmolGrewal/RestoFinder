@@ -36,6 +36,9 @@ class SetPreference extends Component {
 
     onSubmit() {
         var { distance, preference } = this.state
+        if(!distance) {
+            distance = 1000
+        }
         setPreference(this.props.loggedInAs, distance, preference)
     }
 
@@ -50,7 +53,7 @@ class SetPreference extends Component {
                             </Header>
                             <Form size='large' onSubmit={this.onSubmit}>
                                 <Segment stacked>
-                                    <Input onChange={this.onChangeDistance.bind(this)} label={{ basic: true, content: 'km' }} labelPosition='right' placeholder='Enter maximum distance from current location'/>
+                                    <Input required onChange={this.onChangeDistance.bind(this)} label={{ basic: true, content: 'km' }} labelPosition='right' placeholder='Enter maximum distance from current location'/>
                                     <Dropdown onChange={this.onChangePreference.bind(this)} style={{marginTop:"5%"}}placeholder='Cuisines' fluid multiple selection options={foodOptions} />
                                     <Button color='teal' fluid size='large' style={{marginTop:'5%'}}>
                                         Save Changes 
