@@ -47,4 +47,26 @@
         die("unable to create new user");
     }
 
+    $sql = "select U_ID from USERS where U_EMAIL = '$email'";
+    $result = get_from_db($sql, $db, $error);
+
+    if ($error)
+    {
+        http_response_code(500);
+        die("database error");
+    }
+
+    $id = $result[0]["U_ID"];
+    $sql = "insert into PREFERENCES 
+        (U_ID, U_DISTANCE) values 
+        ('$id', 5000)";
+
+    get_from_db($sql, $db, $error);
+
+    if ($error)
+    {
+        http_response_code(500);
+        die("unable to create user preferences");
+    }
+
     mysqli_close($db);
